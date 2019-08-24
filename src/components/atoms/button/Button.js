@@ -22,7 +22,8 @@ const StyledButton = styled.button`
 
   ${props => {
     return (
-      props.primary && css`
+      props.primary &&
+      css`
         background: #ff5a49;
         color: #ffffff;
 
