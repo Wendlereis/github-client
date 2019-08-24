@@ -5,7 +5,7 @@ const LOAD = 'repositories/LOAD'
 export default function repositoriesReducer(state = {}, action = {}) {
   switch (action.type) {
     case LOAD:
-      return { ...state, action }
+      return { ...state, repositories: action.repositores }
     default:
       return state
   }
@@ -15,8 +15,8 @@ export function loadRequest(user) {
   const repositoriesService = new RepositoriesService()
 
   return async dispatch => {
-    const response = await repositoriesService.get(user)
-    dispatch(loadSuccess(response))
+    const { data } = await repositoriesService.get(user)
+    dispatch(loadSuccess(data))
   }
 }
 
