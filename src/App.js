@@ -1,6 +1,11 @@
 import React from 'react'
+import StoreProvider from './store'
 import { Auth } from './components/pages/auth'
 
 export default function App() {
-  return <Auth />
+  return (
+    <StoreProvider>
+      <Auth />
+    </StoreProvider>
+  )
 }
