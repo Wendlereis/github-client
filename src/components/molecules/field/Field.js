@@ -7,17 +7,17 @@ import { Input } from '../../atoms/input'
 const StyledField = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   Input {
     margin-top 8px;
   }
 `
 
-export default function Field({ label }) {
+export default function Field({ label, ...rest }) {
   return (
     <StyledField>
       <Label text={label} />
-      <Input />
+      <Input {...rest} />
     </StyledField>
   )
 }
