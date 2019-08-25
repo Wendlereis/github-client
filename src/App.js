@@ -1,7 +1,12 @@
 import React from 'react'
+import StoreProvider from './store'
 
-function App() {
-  return <div>Hello Gympass</div>
+import Routes from './routes'
+
+export default function App() {
+  return (
+    <StoreProvider>
+      <Routes />
+    </StoreProvider>
+  )
 }
-
-export default App
