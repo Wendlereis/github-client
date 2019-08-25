@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { Button } from '../../atoms/button'
 import { Field } from '../../molecules/field'
 
+import { loadUserRequest } from '../../../store/user'
 import { loadRequest } from '../../../store/repositories'
 
 const StyledForm = styled.form`
@@ -21,6 +22,7 @@ export default function Form() {
   }
 
   function handleLoginClick() {
+    dispatch(loadUserRequest(username))
     dispatch(loadRequest(username))
   }
 

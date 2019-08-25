@@ -1,3 +1,5 @@
+import UserService from '../services/user'
+
 const LOAD = 'user/LOAD'
 
 export default function userReducer(state = {}, action = {}) {
@@ -9,7 +11,16 @@ export default function userReducer(state = {}, action = {}) {
   }
 }
 
-export function loadSuccess(user) {
+export function loadUserRequest(user) {
+  const userService = new UserService()
+
+  return async dispatch => {
+    const { data } = await userService.get(user)
+    dispatch(loadUserSuccess(data))
+  }
+}
+
+function loadUserSuccess(user) {
   return {
     type: LOAD,
     user
