@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux'
 import { Button } from '../../atoms/button'
 import { Field } from '../../molecules/field'
 
-import { loadRequest } from '../../../store/repositories'
+import { loadUserRequest } from '../../../store/user'
+import { loadRepositoriesRequest } from '../../../store/repositories'
 
 const StyledForm = styled.form`
   display: flex;
@@ -21,7 +22,8 @@ export default function Form() {
   }
 
   function handleLoginClick() {
-    dispatch(loadRequest(username))
+    dispatch(loadUserRequest(username))
+    dispatch(loadRepositoriesRequest(username))
   }
 
   function hasUsername() {

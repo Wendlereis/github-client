@@ -5,10 +5,12 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
 import repositoriesReducer from './repositories'
+import userReducer from './user'
 
 const store = createStore(
   combineReducers({
-    repositoriesReducer
+    repositoriesReducer,
+    userReducer
   }),
   compose(
     applyMiddleware(thunk),
