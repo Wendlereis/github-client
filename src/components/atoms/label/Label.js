@@ -26,6 +26,25 @@ const StyledLabel = styled.label`
       `
     )
   }}
+
+  ${props => {
+    return (
+      props.heading &&
+      css`
+        font-size: 24px;
+      `
+    )
+  }}
+
+  ${props => {
+    return (
+      props.subheading &&
+      css`
+        font-size: 18px;
+        text-transform: none;
+      `
+    )
+  }}
 `
 
 export default function Label({ text, ...rest }) {
