@@ -7,7 +7,7 @@ import { Header } from '../../organisms/header'
 
 const StyledHome = styled.section`
   background-color: #f5f6f7;
-  height: 100vh;
+  min-height: 100vh;
 `
 
 export default function Home({ children }) {
