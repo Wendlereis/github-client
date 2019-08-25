@@ -6,7 +6,7 @@ import { Button } from '../../atoms/button'
 import { Field } from '../../molecules/field'
 
 import { loadUserRequest } from '../../../store/user'
-import { loadRequest } from '../../../store/repositories'
+import { loadRepositoriesRequest } from '../../../store/repositories'
 
 const StyledForm = styled.form`
   display: flex;
@@ -23,7 +23,7 @@ export default function Form() {
 
   function handleLoginClick() {
     dispatch(loadUserRequest(username))
-    dispatch(loadRequest(username))
+    dispatch(loadRepositoriesRequest(username))
   }
 
   function hasUsername() {
