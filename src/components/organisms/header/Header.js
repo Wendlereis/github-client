@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
   align-items: center;
   padding: 24px;
   box-shadow: 0px 20px 16px -24px rgba(0, 0, 0, 0.75);
+  background-color: #ffffff;
 `
 
 const AvatarWrapper = styled.section`
