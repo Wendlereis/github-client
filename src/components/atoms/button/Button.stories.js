@@ -3,5 +3,6 @@ import { storiesOf } from '@storybook/react'
 import Button from './Button'
 
 storiesOf('Button', module)
-  .add('normal', () => <Button>Hello Button</Button>)
-  .add('primary', () => <Button primary>Hello Button</Button>)
+  .add('default', () => <Button>default button</Button>)
+  .add('primary', () => <Button primary>primary button</Button>)
+  .add('disabled', () => <Button disabled>disabled button</Button>)

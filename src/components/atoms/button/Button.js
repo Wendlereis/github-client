@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   color: #52bdb2;
   text-transform: uppercase;
   font-weight: 500;
+  transition: all 0.5s;
 
   &:focus {
     outline: none;
@@ -17,7 +18,17 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: #e0e0e0;
-    transition: all 0.5s;
+  }
+
+  &:disabled {
+    background: #d7d7d7;
+    color: #ffffff;
+    cursor: no-drop;
+
+    &:hover {
+      background: #d7d7d7;
+      color: #ffffff;
+    }
   }
 
   ${props => {
