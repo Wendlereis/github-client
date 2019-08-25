@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Form } from '../../organisms/form'
 
 const StyledLogin = styled.section`
+  background-color: #F5F6F7;
   display: flex;
   justify-content: center;
   align-items: center;
