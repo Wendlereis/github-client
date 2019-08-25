@@ -24,6 +24,10 @@ export default function Form() {
     dispatch(loadRequest(username))
   }
 
+  function hasUsername() {
+    return !username
+  }
+
   return (
     <StyledForm>
       <Field
@@ -32,7 +36,12 @@ export default function Form() {
         value={username}
         placeholder="coolest developer"
       />
-      <Button primary type="button" onClick={handleLoginClick}>
+      <Button
+        primary
+        type="button"
+        onClick={handleLoginClick}
+        disabled={hasUsername()}
+      >
         LOGIN
       </Button>
     </StyledForm>
