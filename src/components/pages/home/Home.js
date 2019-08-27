@@ -39,7 +39,10 @@ export default function Home({ match }) {
       <CardWrapper>
         {repositories &&
           repositories.map(repo => (
-            <StyledLink key={repo.id} to={`/repo/${repo.name}`}>
+            <StyledLink
+              key={repo.id}
+              to={`/${match.params.username}/repo/${repo.name}/commits`}
+            >
               <Card repository={repo} />
             </StyledLink>
           ))}
