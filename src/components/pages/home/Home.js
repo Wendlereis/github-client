@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { HomeTemplate } from '../../templates/home'
 import { Card } from '../../molecules/card'
+
+import { loadRepositoriesRequest } from '../../../store/repositories'
 
 const CardWrapper = styled.section`
   display: flex;
@@ -19,7 +22,14 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-export default function Home() {
+export default function Home({ match }) {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const { username } = match.params
+    dispatch(loadRepositoriesRequest(username))
+  }, [])
+
   const repositories = useSelector(
     state => state.repositoriesReducer.repositories
   )
@@ -27,12 +37,17 @@ export default function Home() {
   return (
     <HomeTemplate>
       <CardWrapper>
-        {repositories.map(repo => (
-          <StyledLink key={repo.id} to={`/repo/${repo.name}`}>
-            <Card repository={repo} />
-          </StyledLink>
-        ))}
+        {repositories &&
+          repositories.map(repo => (
+            <StyledLink key={repo.id} to={`/repo/${repo.name}`}>
+              <Card repository={repo} />
+            </StyledLink>
+          ))}
       </CardWrapper>
     </HomeTemplate>
   )
+}
+
+Home.propTypes = {
+  match: PropTypes.object
 }

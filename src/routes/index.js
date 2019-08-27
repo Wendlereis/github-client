@@ -11,7 +11,7 @@ export default function Routes() {
   return (
     <Router history={history}>
       <Route exact path="/" component={Auth} />
-      <Route path="/home" component={Home} />
+      <Route path="/:username/home" component={Home} />
     </Router>
   )
 }
