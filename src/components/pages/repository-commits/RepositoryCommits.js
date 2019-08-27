@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
+import styled from 'styled-components'
 
 import {
   loadCommitsRequest,
   filterCommitsRequest
 } from '../../../store/commits'
+import { RepositoryCommitsTemplate } from '../../templates/repository-commits'
+import { Commit } from '../../organisms/commit'
+import { Input } from '../../atoms/input'
+
+const StyledList = styled.ul`
+  width: 100%;
+  padding: 0;
+`
 
 export default function RepositoryCommits({ match }) {
   const dispatch = useDispatch()
@@ -19,24 +28,21 @@ export default function RepositoryCommits({ match }) {
   function searchCommits(event) {
     const { value } = event.target
 
-    const filteredCommits = commits.filter(commit =>
-      commit.commit.message.includes(value)
-    )
+    const filteredCommits = commits.filter(commit => {
+      return commit.commit.message.includes(value)
+    })
 
     dispatch(filterCommitsRequest(filteredCommits))
   }
 
   return (
-    <section>
-      <h1>{match.params.repository}</h1>
-      <input onChange={searchCommits} />
-      <ul>
+    <RepositoryCommitsTemplate title={match.params.repository}>
+      <Input onChange={searchCommits} placeholder="type commit name" />
+      <StyledList>
         {commits &&
-          commits.map(commit => (
-            <li key={commit.sha}>{commit.commit.message}</li>
-          ))}
-      </ul>
-    </section>
+          commits.map(commit => <Commit key={commit.sha} commit={commit} />)}
+      </StyledList>
+    </RepositoryCommitsTemplate>
   )
 }
 
