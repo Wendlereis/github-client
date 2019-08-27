@@ -1,4 +1,5 @@
 import UserService from '../services/user'
+import { history } from '../routes'
 
 const LOAD = 'user/LOAD'
 
@@ -17,6 +18,8 @@ export function loadUserRequest(user) {
   return async dispatch => {
     const { data } = await userService.get(user)
     dispatch(loadUserSuccess(data))
+
+    history.push(`/${user}/home`)
   }
 }
 
