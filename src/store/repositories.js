@@ -1,7 +1,5 @@
 import RepositoriesService from '../services/repositores'
 
-import { history } from '../routes'
-
 const LOAD = 'repositories/LOAD'
 
 export default function repositoriesReducer(state = {}, action = {}) {
@@ -19,8 +17,6 @@ export function loadRepositoriesRequest(user) {
   return async dispatch => {
     const { data } = await repositoriesService.get(user)
     dispatch(loadRepositoriesSuccess(data))
-
-    history.push('/home')
   }
 }
 
