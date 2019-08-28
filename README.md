@@ -3,23 +3,25 @@
 ## Instalation
 
 ```bash
-//dependencies
+// install dependencies
 yarn install
 
-//run
+// run project
 yarn start
 
-//storybook
+// run storybook
 yarn storybook
+
+// run tests
+yarn test
 ```
 
 ## ES6 features
 
-- **destructuring:** take part of an object or an array
+- **destructuring:** take part of an object or array
 - **async/await:** sugar sintax to promise `.then`
-- **template literals**: allow to user js sintax inside of a string
+- **template literals**: allow to use js sintax inside a string
 - **spread operator**: allow to spread values of an object as component props
-
 
 ## Live
 
