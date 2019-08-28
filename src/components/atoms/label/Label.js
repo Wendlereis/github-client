@@ -68,5 +68,5 @@ export default function Label({ text, ...rest }) {
 }
 
 Label.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }

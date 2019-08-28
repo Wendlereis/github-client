@@ -31,11 +31,11 @@ const UserWrapper = styled.article`
   flex-direction: column;
 
   label:nth-child(1) {
-    color: #EF6758;
+    color: #ef6758;
   }
 
   label:nth-child(2) {
-    color: #22364F;
+    color: #22364f;
   }
 
   @media (min-width: 768px) {
