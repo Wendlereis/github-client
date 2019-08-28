@@ -17,6 +17,8 @@ export function loadUserRequest(user) {
 
   return async dispatch => {
     const { data } = await userService.get(user)
+
+    localStorage.setItem('user', JSON.stringify(data))
     dispatch(loadUserSuccess(data))
 
     history.push(`/${user}/home`)

@@ -13,13 +13,22 @@ const CardWrapper = styled.section`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 24px;
+  box-sizing: border-box;
 `
 
 const StyledLink = styled(Link)`
-  width: calc(50% - 24px);
-  margin: 12px;
+  width: 100%;
+  margin-bottom: 12px;
   text-decoration: none;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 24px);
+    margin: 12px;
+  }
 `
 
 export default function Home({ match }) {
