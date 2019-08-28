@@ -11,6 +11,7 @@ const StyledCommit = styled.section`
   padding: 16px;
   height: 80px;
   border: 1px solid #e0e0e0e0;
+  background-color: #ffffff;
   margin-bottom: 12px;
 `
 
@@ -23,9 +24,6 @@ const MessageWrapper = styled.section`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  label: {
-    margin-top: 8px;
-  }
 `
 
 export default function Commit({ commit }) {

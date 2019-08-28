@@ -11,6 +11,7 @@ const StyledCard = styled.section`
   padding: 20px;
   border: 1px solid #e0e0e0e0;
   background-color: #ffffff;
+  min-height: 152px;
 `
 
 const Row = styled.article`
@@ -18,10 +19,18 @@ const Row = styled.article`
   align-items: center;
   margin-bottom: 16px;
 
+  svg {
+    color: #22364F;
+  }
+
   &:nth-child(1) {
     label {
       margin-left: 12px;
     }
+  }
+
+  &:nth-child(2) {
+    flex: 1;
   }
 
   &:nth-child(3) {
