@@ -12,7 +12,11 @@ const StyledLabel = styled.label`
     return (
       props.title &&
       css`
-        font-size: 44px;
+        font-size: 40px;
+
+        @media (min-width: 768px) {
+          font-size: 44px;
+        }
       `
     )
   }}
@@ -21,8 +25,12 @@ const StyledLabel = styled.label`
     return (
       props.subtitle &&
       css`
-        font-size: 20px;
+        font-size: 16px;
         text-transform: none;
+
+        @media (min-width: 768px) {
+          font-size: 20px;
+        }
       `
     )
   }}
@@ -31,7 +39,11 @@ const StyledLabel = styled.label`
     return (
       props.heading &&
       css`
-        font-size: 24px;
+        font-size: 20px;
+
+        @media (min-width: 768px) {
+          font-size: 24px;
+        }
       `
     )
   }}
@@ -40,8 +52,12 @@ const StyledLabel = styled.label`
     return (
       props.subheading &&
       css`
-        font-size: 18px;
+        font-size: 16px;
         text-transform: none;
+
+        @media (min-width: 768px) {
+          font-size: 20px;
+        }
       `
     )
   }}
