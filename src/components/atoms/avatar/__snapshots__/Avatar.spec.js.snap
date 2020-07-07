@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Avatar should render correctly with an image 1`] = `
-<styled.img
-  src="https://avatars.dicebear.com/v2/identicon/.svg"
-/>
-`;
