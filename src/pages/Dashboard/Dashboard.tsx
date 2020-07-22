@@ -1,60 +1,64 @@
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import logo from "../../assets/images/svg/logo.svg";
 
+import githubAPI from "../../services";
+
 import { Title, Form, Repositories } from "./styles";
 
-const Dashboard: React.FC = () => (
-  <>
-    <img src={logo} alt="Github explorer" />
-    <Title>Explore repositórios no Github.</Title>
+interface Repository {
+  full_name: string;
+  description: string;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+}
 
-    <Form>
-      <input type="text" placeholder="Digite o nome do repositório" />
-      <button type="submit">Pesquisar</button>
-    </Form>
+const Dashboard: React.FC = () => {
+  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repo, setRepo] = useState("");
 
-    <Repositories>
-      <a href="aa">
-        <img
-          src="https://avatars0.githubusercontent.com/u/6570553?s=460&u=363a4bb79dea480907f1fe6909a0e63247ed9b74&v=4"
-          alt="blabla"
+  async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+
+    const response = await githubAPI.get<Repository>(`/repos/${repo}`);
+
+    const repository = response.data;
+
+    setRepositories([...repositories, repository]);
+    setRepo("");
+  }
+
+  return (
+    <>
+      <img src={logo} alt="Github explorer" />
+      <Title>Explore repositórios no Github.</Title>
+
+      <Form onSubmit={handleAddRepository}>
+        <input
+          value={repo}
+          onChange={(e) => setRepo(e.target.value)}
+          placeholder="Digite usuario/nome-do-repositorio"
         />
-        <div>
-          <strong>Bla Bla</strong>
-          <p>Descricao top</p>
-        </div>
+        <button type="submit">Pesquisar</button>
+      </Form>
 
-        <FiChevronRight />
-      </a>
+      <Repositories>
+        {repositories.map((repository) => (
+          <a key={repository.full_name} href="#">
+            <img src={repository.owner.avatar_url} alt="" />
+            <div>
+              <strong>{repository.full_name}</strong>
+              <p>{repository.description}</p>
+            </div>
 
-      <a href="aa">
-        <img
-          src="https://avatars0.githubusercontent.com/u/6570553?s=460&u=363a4bb79dea480907f1fe6909a0e63247ed9b74&v=4"
-          alt="blabla"
-        />
-        <div>
-          <strong>Bla Bla</strong>
-          <p>Descricao top</p>
-        </div>
-
-        <FiChevronRight />
-      </a>
-
-      <a href="aa">
-        <img
-          src="https://avatars0.githubusercontent.com/u/6570553?s=460&u=363a4bb79dea480907f1fe6909a0e63247ed9b74&v=4"
-          alt="blabla"
-        />
-        <div>
-          <strong>Bla Bla</strong>
-          <p>Descricao top</p>
-        </div>
-
-        <FiChevronRight />
-      </a>
-    </Repositories>
-  </>
-);
+            <FiChevronRight />
+          </a>
+        ))}
+      </Repositories>
+    </>
+  );
+};
 
 export default Dashboard;
