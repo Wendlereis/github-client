@@ -9,10 +9,19 @@ export const Title = styled.h1`
   color: #3a3a3a;
 `;
 
-export const Form = styled.form`
+interface FormProps {
+  hasError: boolean;
+}
+
+export const Form = styled.form<FormProps>(
+  ({ hasError }) => `
   display: flex;
   margin-top: 40px;
   max-width: 715px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: ${hasError ? shade(0.2, "#c53030") : "transparent"};
 
   input {
     flex: 1;
@@ -41,6 +50,14 @@ export const Form = styled.form`
       background-color: ${shade(0.2, "#04d361")};
     }
   }
+`
+);
+
+export const FormError = styled.span`
+  display: block;
+  color: #c53030;
+  margin-top: 8px;
+  font-size: 14px;
 `;
 
 export const Repositories = styled.div`
